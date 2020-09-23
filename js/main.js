@@ -51,11 +51,11 @@ require([
 	Locate,
 	Home,
 ) {
-	
+
 	//LAYERS
 	uc_gis_people = new FeatureLayer({
 		portalItem: {
-			id: "a712b4f4423b465fa4a474954d815f9e"
+			id: "1f71d16028cb45a5be126e1225f0908d"
 		},
 		visible: true,
 		popupEnabled:true
@@ -66,7 +66,7 @@ require([
 	//BASEMAPS
 	uc_gis_map = new WebMap({
         portalItem: {
-		  	id:"ff129bea8c55437c8f08a4fb7b45047c"
+		  	id:"8ed0ebe913c1482f9d4e3f266c31c5d1"
         }
     });
 
@@ -76,63 +76,63 @@ require([
 		map: uc_gis_map,
 		layerViews: everyLayer
 	})
-	
-	//WIDGETS	
+
+	//WIDGETS
 	homeBtn = new Home({
         view: view
     })
     locateBtn = new Locate({
         view: view
       });
-    
+
 	view.ui.add(locateBtn, {position: "top-left"});
     view.ui.add(homeBtn, "top-left")
-	
+
 	function makeCard(person){
-		var name = person.attributes["name"]
-		var campus = campus_codes[person.attributes["campus"]]
-		var role = roles[person.attributes["person_type"]]
-		var bio = person.attributes["bio"]
-		var email = person.attributes["contact_email"]		
-		
+		var name = person.attributes["Name"]
+		var campus = campus_codes[person.attributes["Campus"]]
+		var role = roles[person.attributes["Title"]]
+		var bio = person.attributes["Bio"]
+		var email = person.attributes["Contact_Email"]
+
 		var all_attributes = [name, campus, role, bio, email]
-		
+
 		var d = document.createElement("div")
 		d.className = "person"
-		
+
 		var nametag = document.createElement("h3")
 		nametag.className = "nametag"
 		nametag.textContent = name
 		d.appendChild(nametag)
-		
+
 		var email_link = document.createElement("a")
 		email_link.href = "mailto:" + email
 		email_link.textContent = email
 		d.appendChild(email_link)
-		
+
 		for (i = 1; i < all_attributes.length-1; i++){
 			var p = document.createElement("p")
 			p.textContent = all_attributes[i]
 			d.appendChild(p)
-		}		
-		
+		}
+
 		people_menu.appendChild(d)
-		
+
 		var li = document.createElement("li")
 		li.appendChild(d)
-		people_menu.appendChild(li)		
-		
+		people_menu.appendChild(li)
+
 		return d
 	}
-	
+
 	var people_menu = document.getElementById("people_menu")
-	
+
 	uc_gis_people.queryFeatures().then(function(results){
 		var people_list = results.features
-		people_list.forEach(function(person){			
+		people_list.forEach(function(person){
 			makeCard(person)
 		})
 	});
-	
-		
+
+
 });
