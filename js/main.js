@@ -91,11 +91,12 @@ require([
 	function makeCard(person){
 		var name = person.attributes["Name"]
 		var campus = campus_codes[person.attributes["Campus"]]
-		var role = roles[person.attributes["Title"]]
+		var role = person.attributes["Title"]
+		var department = person.attributes["Department"]
 		var bio = person.attributes["Bio"]
 		var email = person.attributes["Contact_Email"]
 
-		var all_attributes = [name, campus, role, bio, email]
+		var all_attributes = [name, campus, department, role, bio, email]
 
 		var d = document.createElement("div")
 		d.className = "person"
