@@ -73,7 +73,8 @@
 
 		#side-nav {
 			padding: 0px;
-			width: 400px;
+			width: 100%;
+			min-width:200px;
 		}
 
 		.full-width {
@@ -84,7 +85,6 @@
 			display: -webkit-box;
 			display: -ms-flexbox;
 			display: flex;
-			flex-direction: row;
 			-webkit-box-pack: start;
 			-ms-flex-pack: start;
 			justify-content: flex-start;
@@ -203,7 +203,8 @@
 		}
 
 		#people_input {
-			width: 582px;
+			max-width:582px;
+			min-width: 200px;
 			height: 40px;
 			border-radius: 10px;
 		}
@@ -230,7 +231,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			background-color:#1295D8;
+			background-color:#005581;
 			color: white;
 			-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 			border-radius: 4px;
@@ -245,6 +246,60 @@
 		#buttons li {
 			margin-top: 0;
 		}
+		
+		.hidden {
+			display:none
+		}
+		
+		.flow-down {
+			flex-direction: column;
+		}
+		
+		.flow-up {
+			flex-direction: column-reverse;
+		}
+		
+		.flow-forward {
+			flex-direction: row;
+		}
+		
+		.flow-back {
+			flex-direction: row-reverse;
+		}
+		
+		#side-nav-container {
+			padding: 0px;
+			width: 100%;
+			max-width:500px;
+			min-width:200px;
+		}
+		
+		#side-nav > * {
+			padding:20px;
+		}
+		
+		@media only screen and (max-width: 1366px) {
+			#side-nav, #side-nav-container {
+				min-width: 200px;
+			}
+		}
+		
+		@media only screen and (max-width: 900px) {
+			#main-wrapper {
+				display:none
+			}
+			
+			#side-nav-container {
+				max-width:900px;
+				min-width:200px;
+			}
+			
+			
+		}
+		
+		
+
+
 
 	</style>
 </head>
@@ -253,19 +308,21 @@
 <body>
 	<div id="main-grid">
 		<div id="main-content">
-			<div id="side-nav" class="tablet-hide">
-				<div id="searchbar">
-					<input type="text" id="people_input" onkeyup="filterPeople()" placeholder="Search for a person, campus, or role..." title="searchbar">
-				</div>
-				<div id="uc_gis_people">
-					<ul id="people_menu">
-					</ul>
-				</div>
-					<div id="admin-div">
-					<div id="buttons">
-						<a href="https://ucop.co1.qualtrics.com/jfe/form/SV_aVhrCksg40Ljvh3" class="hvr-rectangle-out" target="_blank">
-							Click here to add yourself
-						</a>
+			<div id="side-nav-container">
+				<div id="side-nav">
+					<div id="searchbar">
+						<input type="text" id="people_input" onkeyup="filterPeople()" placeholder="Search for a person, campus, or area of interest..." title="searchbar">
+					</div>
+					<div id="uc_gis_people">
+						<ul id="people_menu">
+						</ul>
+					</div>
+						<div id="admin-div">
+						<div id="buttons">
+							<a href="https://ucop.co1.qualtrics.com/jfe/form/SV_aVhrCksg40Ljvh3" role="button">
+								Register Now
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
